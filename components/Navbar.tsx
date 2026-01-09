@@ -11,8 +11,8 @@ const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
-    play();
-    setOpen(false);
+    play();          // ✅ sound
+    setOpen(false);  // ✅ close mobile menu
   };
 
   return (
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
               <motion.a
                 whileHover={{ scale: 1.1, color: "#2563EB" }}
                 whileTap={{ scale: 0.95 }}
-                onClick={play}
+                onClick={() => play()}   // ✅ FIXED
                 href={section === "blog" ? "/blog" : `#${section}`}
                 className="cursor-pointer"
               >
@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
               {navItems.map((section) => (
                 <li key={section}>
                   <a
-                    onClick={handleClick}
+                    onClick={handleClick}   // ✅ safe
                     href={section === "blog" ? "/blog" : `#${section}`}
                     className="block text-lg font-medium text-black dark:text-zinc-50"
                   >
